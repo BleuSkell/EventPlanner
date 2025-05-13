@@ -61,7 +61,8 @@ class EventController extends Controller
     {
         // Validate the request data
         $request->validate([
-            'name' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
             'date' => 'required|date',
             'location' => 'required|string|max:255',
         ]);
