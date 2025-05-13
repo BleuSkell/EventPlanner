@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Event;
 
 class EventController extends Controller
 {
@@ -23,7 +24,7 @@ class EventController extends Controller
         // Return the view with the event data
         return view('events.show', compact('event'));
     }
-    
+
     public function create()
     {
         // Return the view to create a new event
