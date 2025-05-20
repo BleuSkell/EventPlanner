@@ -1,28 +1,41 @@
 <x-app-layout>
-    <h1>Events</h1>
-    <a href="{{ route('events.create') }}" class="btn btn-primary">Create Event</a>
-    <table class="table mt-3">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Date</th>
-                <th>Location</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($events as $event)
-                <tr>
-                    <td>{{ $event->id }}</td>
-                    <td>{{ $event->title }}</td>
-                    <td>{{ $event->date }}</td>
-                    <td>{{ $event->location }}</td>
-                    <td>
-                        <a href="{{ route('events.show', $event->id) }}" class="btn btn-info">View</a>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Events') }}
+        </h2>
+    </x-slot>
+
+    <div class="flex flex-row justify-center">
+        <div class="flex flex-col justify-center h-[80vh]">
+            
+            <a href="{{ route('events.create') }}" class="w-[7rem]">
+                <button class="bg-blue-500 p-2 rounded-lg text-white">
+                    Create Event
+                </button>
+            </a>
+            
+            <table class="table mt-3 border-collapse border border-gray-500 text-center">
+                <thead>
+                    <tr>
+                        <th class="border border-gray-500 p-2">Title</th>
+                        <th class="border border-gray-500 p-2">Date</th>
+                        <th class="border border-gray-500 p-2">Location</th>
+                        <th class="border border-gray-500 p-2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($events as $event)
+                        <tr>
+                            <td class="border border-gray-500 p-2">{{ $event->title }}</td>
+                            <td class="border border-gray-500 p-2">{{ $event->date }}</td>
+                            <td class="border border-gray-500 p-2">{{ $event->location }}</td>
+                            <td class="border border-gray-500 p-2">
+                                <a href="{{ route('events.show', $event->id) }}" class="text-yellow-600">Info</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
 </x-app-layout>
