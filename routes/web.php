@@ -58,4 +58,36 @@ Route::get('/Register-event', function () {
     return view('Register-event.index');
 })->middleware(['auth', 'verified'])->name('Register-event');
 
+Route::get('/registrations', function () {
+    $registrations = DB::table('registrations')
+        ->where('userId', Auth::id())
+        ->orderBy('time')
+        ->get();
+
+    // Event titels per id (pas aan indien nodig)
+    $eventTitles = [
+        1 => 'Quia veniam repellat odit.',
+        2 => 'Culpa cumque modi quas accusamus.',
+        3 => 'Enim debitis suscipit.',
+        4 => 'Odio quo consequatur.',
+        5 => 'Sit dicta velit quis laboriosam',
+        6 => 'Nulla sit ut vel.',
+        7 => 'Rerum placeat sed quo.',
+        8 => 'Qui qui hic dolorem.',
+        9 => 'Facilis enim qui.',
+        10 => 'Doloremque accusantium reprehenderit.',
+    ];
+
+    return view('registrations.overview', compact('registrations', 'eventTitles'));
+})->middleware(['auth', 'verified'])->name('registrations.overview');
+
+Route::delete('/registrations/{id}', function ($id) {
+    DB::table('registrations')
+        ->where('id', $id)
+        ->where('userId', Auth::id())
+        ->delete();
+
+    return back()->with('success', 'Inschrijving succesvol geannuleerd.');
+})->middleware(['auth', 'verified'])->name('registrations.cancel');
+
 require __DIR__.'/auth.php';

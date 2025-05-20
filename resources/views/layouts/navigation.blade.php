@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('Register-event')" :active="request()->routeIs('Register-event')">
                         {{ __('inschrijven') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('registrations.overview')" :active="request()->routeIs('registrations.overview')">
+                        {{ __('Mijn inschrijvingen') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -75,6 +78,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('Register-event')" :active="request()->routeIs('Register-event')">
                 {{ __('inschrijven') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('registrations.overview')" :active="request()->routeIs('registrations.overview')">
+                {{ __('Mijn inschrijvingen') }}
             </x-responsive-nav-link>
         </div>
 
