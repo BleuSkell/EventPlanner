@@ -1,23 +1,32 @@
 <x-app-layout>
-    <h1>Create Event</h1>
-    <form action="{{ route('events.store') }}" method="POST">
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Create event') }}
+        </h2>
+    </x-slot>
+
+    <form action="{{ route('events.store') }}" method="POST" class="max-w-md mx-auto mt-8 bg-white p-6 rounded shadow">
         @csrf
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" name="title" id="title" class="form-control" required>
+        <div class="mb-4">
+            <label for="title" class="block mb-1 font-medium text-gray-700">Event title</label>
+            <input type="text" name="title" id="title" required
+                class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
-        <div class="form-group">
-            <label for="description">Description</label>
-            <textarea name="description" id="description" class="form-control"></textarea>
+        <div class="mb-4">
+            <label for="description" class="block mb-1 font-medium text-gray-700">Description</label>
+            <textarea name="description" id="description"
+                class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
         </div>
-        <div class="form-group">
-            <label for="date">Date</label>
-            <input type="date" name="date" id="date" class="form-control" required>
+        <div class="mb-4">
+            <label for="date" class="block mb-1 font-medium text-gray-700">Date</label>
+            <input type="date" name="date" id="date" required
+                class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
-        <div class="form-group">
-            <label for="location">Location</label>
-            <input type="text" name="location" id="location" class="form-control" required>
+        <div class="mb-6">
+            <label for="location" class="block mb-1 font-medium text-gray-700">Location</label>
+            <input type="text" name="location" id="location" required
+                class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
-        <button type="submit" class="btn btn-success mt-3">Create</button>
+        <button type="submit" class="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded transition">Create</button>
     </form>
 </x-app-layout>
