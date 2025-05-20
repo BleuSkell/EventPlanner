@@ -44,8 +44,9 @@ class EventController extends Controller
         // Create a new event
         Event::create($request->all());
 
-        // Redirect to the events index with a success message
-        return redirect()->route('events.index')->with('success', 'Event created successfully.');
+        // Redirect to the show page of the newly created event with a success message
+        return redirect()->route('events.show', Event::latest()->first()->id)
+            ->with('success', 'Event created successfully.');
     }
 
     public function edit($id)
@@ -73,8 +74,8 @@ class EventController extends Controller
         // Update the event
         $event->update($request->all());
 
-        // Redirect to the events index with a success message
-        return redirect()->route('events.index')->with('success', 'Event updated successfully.');
+        // Redirect to the show page of the updated event with a success message
+        return redirect()->route('events.show', $event->id)->with('success', 'Event updated successfully.');
     }
 
     public function destroy($id)
